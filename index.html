@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivamshu Roy | Data Scientist &amp; ML Engineer</title>
+    <meta name="description" content="Shivamshu Roy — Data Scientist & Machine Learning Engineer. MS in Data Science at SUNY Buffalo. Ex-Nxtwave, TCS, NIC. Published IEEE Researcher. Seeking Summer 2027 Internships.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    
+    <!-- Open Graph / Social Media Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Shivamshu Roy | Data Scientist &amp; ML Engineer">
+    <meta property="og:description" content="MS in Data Science at SUNY Buffalo. Experience at Nxtwave, TCS, NIC. Published IEEE researcher in financial time series.">
+    <meta property="og:url" content="https://shivamshuroy448.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shivamshu Roy | Data Scientist &amp; ML Engineer">
+    <meta name="twitter:description" content="MS in Data Science at SUNY Buffalo. Building AI pipelines, neural evaluations, and data science solutions.">
+
+    <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+    <style>
+        :root {
+            --bg: #0b0d13;
+            --card-bg: rgba(18, 22, 34, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-cyan: #38bdf8;
+            --accent-purple: #818cf8;
+            --accent-emerald: #34d399;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+            overflow-x: hidden;
+            selection-background-color: #38bdf8;
+            selection-color: #0b0d13;
+        }
+
+        /* Ambient Glow & Grid */
+        .ambient-grid {
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 100% 40%, rgba(129, 140, 248, 0.05) 0%, transparent 50%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(56, 189, 248, 0.15);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
+        }
+
+        .badge-cyan {
+            border-color: rgba(56, 189, 248, 0.25);
+            background: rgba(56, 189, 248, 0.08);
+            color: #7dd3fc;
+        }
+
+        .badge-emerald {
+            border-color: rgba(52, 211, 153, 0.25);
+            background: rgba(52, 211, 153, 0.08);
+            color: #6ee7b7;
+        }
+
+        .pulse-beacon {
+            position: relative;
+            display: inline-flex;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #38bdf8;
+        }
+
+        .pulse-beacon::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #38bdf8;
+            opacity: 0.75;
+            animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes ping {
+            75%, 100% {
+                transform: scale(2.4);
+                opacity: 0;
+            }
+        }
+
+        .code-font {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        /* Subtle scroll reveal */
+        .reveal-node {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal-node.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="ambient-grid min-h-screen">
+
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#0b0d13]/80 border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 to-indigo-500 flex items-center justify-center font-bold text-white text-sm shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+                    SR
+                </div>
+                <div>
+                    <span class="font-semibold text-sm tracking-tight text-slate-100">Shivamshu Roy</span>
+                    <span class="text-xs text-slate-500 hidden sm:inline-block ml-2 font-mono">MS @ SUNY Buffalo</span>
+                </div>
+            </a>
+
+            <nav class="flex items-center gap-6 text-sm text-slate-400">
+                <a href="#countdown" class="hover:text-sky-400 transition-colors hidden md:block">Internship '27</a>
+                <a href="#experience" class="hover:text-sky-400 transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-sky-400 transition-colors">Projects</a>
+                <a href="#research" class="hover:text-sky-400 transition-colors hidden sm:block">Research</a>
+                <a href="#writing" class="hover:text-sky-400 transition-colors hidden sm:block">Writing</a>
+                <a href="#skills" class="hover:text-sky-400 transition-colors hidden sm:block">Skills</a>
+                <a href="#contact" class="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-sky-500/20 hover:text-sky-300 border border-white/10 hover:border-sky-500/30 transition-all text-xs font-medium text-slate-200">Get in Touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-20">
+
+        <!-- HERO SECTION -->
+        <section class="pt-8 pb-4 relative">
+            <div class="max-w-3xl space-y-6">
+                
+                <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-xs font-medium text-sky-400">
+                    <span class="pulse-beacon"></span>
+                    <span>Seeking Summer 2027 Data Science / ML Internship</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-100 leading-[1.15]">
+                    Data Scientist &amp; <br>
+                    <span class="text-gradient">Machine Learning Engineer</span>.
+                </h1>
+
+                <p class="text-lg text-slate-400 leading-relaxed max-w-2xl font-normal">
+                    Master of Science in Engineering Science (Data Science) student at <strong class="text-slate-200 font-medium">SUNY Buffalo</strong>. Experienced in building reliable predictive pipelines, neural evaluations, and scalable analytics solutions at <strong class="text-slate-200 font-medium">Nxtwave</strong> and <strong class="text-slate-200 font-medium">TCS</strong>. Published IEEE researcher in financial time-series forecasting.
+                </p>
+
+                <!-- Action links & Socials -->
+                <div class="flex flex-wrap items-center gap-3 pt-2">
+                    <a href="#projects" class="px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm transition-all shadow-lg shadow-sky-500/25 flex items-center gap-2">
+                        <span>Explore Projects</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+
+                    <a href="resume.pdf" target="_blank" class="px-4 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-sm font-medium transition-all flex items-center gap-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        <span>Resume (PDF)</span>
+                    </a>
+                    
+                    <a href="https://github.com/Shivamshuroy448" target="_blank" rel="noopener" class="px-3.5 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-sm font-medium transition-all flex items-center gap-1.5">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        <span>GitHub</span>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/shivamshuroy/" target="_blank" rel="noopener" class="px-3.5 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-sm font-medium transition-all flex items-center gap-1.5">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <span>LinkedIn</span>
+                    </a>
+
+                    <a href="https://shivamshuroy.medium.com/" target="_blank" rel="noopener" class="px-3.5 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-sm font-medium transition-all flex items-center gap-1.5">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                        <span>Medium</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- COUNTDOWN TIMER SECTION: SIMPLE, BOLD & CREATIVE -->
+        <section id="countdown" class="reveal-node">
+            <div class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden border border-sky-500/20 bg-gradient-to-r from-sky-950/20 via-slate-900/60 to-indigo-950/20">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-sky-400 mb-1">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                            <span>Target: Summer 2027 Internship Window</span>
+                        </div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-100">Countdown to Next Summer</h2>
+                        <p class="text-xs text-slate-400 mt-1">Preparing, shipping ML models, and ready to interview.</p>
+                    </div>
+
+                    <!-- Countdown Blocks -->
+                    <div class="flex items-center gap-3 sm:gap-4 font-mono text-center">
+                        <div class="bg-black/40 border border-white/5 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 min-w-[70px]">
+                            <div class="text-2xl sm:text-4xl font-extrabold text-sky-400" id="c-days">000</div>
+                            <div class="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">Days</div>
+                        </div>
+                        <span class="text-slate-600 font-bold text-xl">:</span>
+                        <div class="bg-black/40 border border-white/5 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 min-w-[64px]">
+                            <div class="text-2xl sm:text-4xl font-extrabold text-slate-200" id="c-hours">00</div>
+                            <div class="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">Hours</div>
+                        </div>
+                        <span class="text-slate-600 font-bold text-xl">:</span>
+                        <div class="bg-black/40 border border-white/5 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 min-w-[64px]">
+                            <div class="text-2xl sm:text-4xl font-extrabold text-slate-200" id="c-mins">00</div>
+                            <div class="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">Mins</div>
+                        </div>
+                        <span class="text-slate-600 font-bold text-xl">:</span>
+                        <div class="bg-black/40 border border-white/5 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 min-w-[64px]">
+                            <div class="text-2xl sm:text-4xl font-extrabold text-indigo-400" id="c-secs">00</div>
+                            <div class="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">Secs</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Progress Bar -->
+                <div class="mt-6 pt-4 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500 font-mono">
+                    <span>Fall 2026 (SUNY Buffalo)</span>
+                    <div class="flex-1 max-w-md mx-auto w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                        <div id="c-bar" class="h-full bg-gradient-to-r from-sky-500 to-indigo-500 rounded-full transition-all duration-1000" style="width: 0%;"></div>
+                    </div>
+                    <span id="c-percent" class="text-sky-400 font-semibold">June 1, 2027</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED PROJECTS WITH INTERACTIVE HIGHLIGHTS -->
+        <section id="projects" class="space-y-6 reveal-node">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-white/5 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-100">Featured Projects</h2>
+                    <p class="text-sm text-slate-400">Production AI systems, chess neural evaluations, and deep predictive models</p>
+                </div>
+                <a href="https://github.com/Shivamshuroy448" target="_blank" rel="noopener" class="text-xs font-mono text-sky-400 hover:text-sky-300 flex items-center gap-1">
+                    <span>All Repositories on GitHub</span>
+                    <span>&rarr;</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <!-- Project 1: CheckmateLab -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6 group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="badge badge-cyan">
+                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                Chess AI Engine
+                            </span>
+                            <a href="https://github.com/Shivamshuroy448/CheckmateLab" target="_blank" rel="noopener" class="text-slate-400 hover:text-slate-100 transition-colors" title="View Source">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            </a>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-sky-400 transition-colors">
+                                CheckmateLab
+                            </h3>
+                            <p class="text-xs font-mono text-slate-500 mt-0.5">Real-Time Stockfish 16 NNUE Engine</p>
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Real-time chess analysis dashboard powered by <span class="text-slate-100 font-medium">Stockfish 16 NNUE</span> with automated opening book detection and deep position evaluations. Developed custom move accuracy scoring and win probabilities.
+                        </p>
+
+                        <!-- Live Mini Demo Metric Visualizer -->
+                        <div class="bg-black/30 rounded-xl p-3.5 border border-white/5 space-y-2">
+                            <div class="flex justify-between text-xs font-mono text-slate-400">
+                                <span>Engine: Stockfish 16</span>
+                                <span class="text-emerald-400 font-semibold">+1.82 (Advantage)</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden flex">
+                                <div class="bg-emerald-400 h-full w-[65%]"></div>
+                                <div class="bg-slate-700 h-full w-[35%]"></div>
+                            </div>
+                            <div class="text-[11px] text-slate-400 flex items-center justify-between pt-1">
+                                <span>Google OAuth &amp; Firebase</span>
+                                <span class="text-sky-400">-40% manual effort</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="badge">Python</span>
+                        <span class="badge">Stockfish 16</span>
+                        <span class="badge">Firebase</span>
+                        <span class="badge">React</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: ClearHire AI -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6 group border-indigo-500/20">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="badge" style="border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.1);color:#a5b4fc;">
+                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                AI Recruiter &amp; Automation
+                            </span>
+                            <a href="https://github.com/Shivamshuroy448/clearhire-app" target="_blank" rel="noopener" class="text-slate-400 hover:text-slate-100 transition-colors" title="View Source">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            </a>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-indigo-400 transition-colors">
+                                ClearHire AI
+                            </h3>
+                            <p class="text-xs font-mono text-slate-500 mt-0.5">Job Tracker, Gmail Auto-Pilot &amp; Ghosting Risk</p>
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            AI-powered job application tracker with <span class="text-slate-100 font-medium">Gmail Auto-Pilot sync</span>. Features algorithmic "Ghosting" risk estimation based on company reply velocity and automated context-aware email drafting.
+                        </p>
+
+                        <!-- Ghosting Risk Simulation Box -->
+                        <div class="bg-black/30 rounded-xl p-3.5 border border-white/5 space-y-2">
+                            <div class="flex justify-between text-xs font-mono text-slate-400">
+                                <span>Risk Analysis: Meta / Stripe</span>
+                                <span class="text-indigo-400 font-semibold">Ghosting Risk: 72%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden flex">
+                                <div class="bg-indigo-500 h-full w-[72%]"></div>
+                                <div class="bg-slate-700 h-full w-[28%]"></div>
+                            </div>
+                            <div class="text-[11px] text-slate-400 flex items-center justify-between pt-1">
+                                <span>Auto-Pilot Status</span>
+                                <span class="text-emerald-400 font-mono">Follow-up Draft Ready</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="badge">GenAI / LLMs</span>
+                        <span class="badge">Gmail API</span>
+                        <span class="badge">Python</span>
+                        <span class="badge">Full-Stack</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: Green Grid AI -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6 group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="badge badge-emerald">
+                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                Smart Energy &amp; Mobility
+                            </span>
+                            <a href="https://github.com/Shivamshuroy448/greengridai" target="_blank" rel="noopener" class="text-slate-400 hover:text-slate-100 transition-colors" title="View Source">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            </a>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-emerald-400 transition-colors">
+                                Green Grid AI
+                            </h3>
+                            <p class="text-xs font-mono text-slate-500 mt-0.5">EV Charging Demand &amp; Location Prediction</p>
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            AI-based electric vehicle charging demand forecasting and optimal station placement system using temporal, spatial, and demand-driven features across a 17,280-record dataset.
+                        </p>
+
+                        <!-- Stat Box -->
+                        <div class="grid grid-cols-2 gap-3 bg-black/30 rounded-xl p-3.5 border border-white/5 text-xs font-mono">
+                            <div>
+                                <span class="text-slate-500 block text-[10px]">DATASET SCALE</span>
+                                <span class="text-slate-200 font-bold text-sm">17,280 Records</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-500 block text-[10px]">PIPELINE</span>
+                                <span class="text-emerald-400 font-bold text-sm">Spatial + Temporal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="badge">Machine Learning</span>
+                        <span class="badge">Spatial-Temporal</span>
+                        <span class="badge">Python</span>
+                        <span class="badge">EDA</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- RESEARCH SPOTLIGHT (IEEE Publication) -->
+        <section id="research" class="reveal-node">
+            <div class="glass-card rounded-2xl p-6 sm:p-8 border-indigo-500/30 relative overflow-hidden bg-gradient-to-br from-indigo-950/20 via-slate-900 to-slate-900">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="space-y-3 max-w-2xl">
+                        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-mono text-indigo-400">
+                            <span>IEEE Xplore Published Research</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-100 leading-snug">
+                            Improving Stock Market Forecasting Using Advanced Time Series Analysis Techniques
+                        </h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Presented at the <strong class="text-slate-300">CVMI-2023</strong> conference and published in IEEE. Developed novel optimization algorithms enhancing prediction accuracy of Holt-Winters and Simple Moving Average models for volatile financial markets.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col items-start md:items-end gap-3 flex-shrink-0">
+                        <a href="https://ieeexplore.ieee.org/document/10465177" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition-all shadow-lg shadow-indigo-600/25 flex items-center gap-2">
+                            <span>Read on IEEE Xplore</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                        <span class="text-xs font-mono text-slate-500">DOI: 10.1109/CVMI59938.2023.10465177</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WRITING & MEDIUM ARTICLES -->
+        <section id="writing" class="space-y-6 reveal-node">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-white/5 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-100">Writing &amp; Technical Insights</h2>
+                    <p class="text-sm text-slate-400">Thoughts on AI engineering, grad school learning habits, and building software</p>
+                </div>
+                <a href="https://shivamshuroy.medium.com/" target="_blank" rel="noopener" class="text-xs font-mono text-sky-400 hover:text-sky-300 flex items-center gap-1">
+                    <span>Read all on Medium</span>
+                    <span>&rarr;</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Article 1 -->
+                <a href="https://shivamshuroy.medium.com/there-is-an-odd-sort-of-guilt-that-accompanies-starting-a-masters-degree-429dc7a6bf80" target="_blank" rel="noopener" class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4 group">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between text-xs font-mono text-slate-500">
+                            <span class="badge badge-cyan text-[11px]">Grad School · Mindset</span>
+                            <span class="flex items-center gap-1 text-slate-400 group-hover:text-sky-400 transition-colors">
+                                <span>Medium</span>
+                                <span>&nearr;</span>
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100 group-hover:text-sky-400 transition-colors leading-snug">
+                            There is an odd sort of guilt that accompanies starting a Master’s degree
+                        </h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            How a daily 15-minute GitHub habit changed the way I learn, stay accountable, and navigate the transition into graduate data science studies at SUNY Buffalo.
+                        </p>
+                    </div>
+                    <div class="pt-2 flex items-center justify-between text-xs font-mono text-slate-500 border-t border-white/5">
+                        <span>By Shivamshu Roy</span>
+                        <span class="text-sky-400">Read Article &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 2 -->
+                <a href="https://shivamshuroy.medium.com/i-got-tired-of-paying-for-chess-subscriptions-so-i-built-my-own-browser-engine-923a23a7cc03" target="_blank" rel="noopener" class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4 group">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between text-xs font-mono text-slate-500">
+                            <span class="badge badge-emerald text-[11px]">Chess AI · Systems</span>
+                            <span class="flex items-center gap-1 text-slate-400 group-hover:text-emerald-400 transition-colors">
+                                <span>Medium</span>
+                                <span>&nearr;</span>
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100 group-hover:text-emerald-400 transition-colors leading-snug">
+                            I Got Tired of Paying for Chess Subscriptions, So I Built My Own Browser Engine
+                        </h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            A breakdown of CheckmateLab: integrating Stockfish 16 NNUE, WebAssembly, live ELO tracking, and real-time position evaluations right in the browser.
+                        </p>
+                    </div>
+                    <div class="pt-2 flex items-center justify-between text-xs font-mono text-slate-500 border-t border-white/5">
+                        <span>By Shivamshu Roy</span>
+                        <span class="text-emerald-400">Read Article &rarr;</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- EXPERIENCE & EDUCATION SPLIT TIMELINE -->
+        <section id="experience" class="space-y-8 reveal-node">
+            <div class="border-b border-white/5 pb-4">
+                <h2 class="text-2xl font-bold text-slate-100">Experience &amp; Education</h2>
+                <p class="text-sm text-slate-400">Industry analytics, data engineering, and academic background</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Work Experience -->
+                <div class="space-y-6">
+                    <h3 class="text-sm font-mono uppercase tracking-widest text-sky-400 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        Professional Experience
+                    </h3>
+
+                    <!-- Role 1: Nxtwave -->
+                    <div class="glass-card rounded-xl p-5 space-y-3 relative border-l-2 border-l-sky-400">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-slate-100">Data Scientist</h4>
+                                <p class="text-xs font-mono text-slate-400">Nxtwave Disruptive Technologies</p>
+                            </div>
+                            <span class="text-xs font-mono text-slate-500">Dec 2024 &ndash; Feb 2026</span>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                            <li>Architected end-to-end analytics and automation initiatives using SQL, BigQuery, and Google Apps Script.</li>
+                            <li>Engineered executive dashboards and pipelines for admissions, academic, and finance functions to drive operational decisions.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 2: TCS -->
+                    <div class="glass-card rounded-xl p-5 space-y-3 relative border-l-2 border-l-slate-600">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-slate-100">Data Science Intern</h4>
+                                <p class="text-xs font-mono text-slate-400">Tata Consultancy Services (TCS)</p>
+                            </div>
+                            <span class="text-xs font-mono text-slate-500">May 2024 &ndash; Aug 2024</span>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                            <li>Conducted exploratory data analysis (EDA) and deployed Python &amp; BI automation pipelines.</li>
+                            <li>Designed scalable cross-team data visualization reporting dashboards.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 3: National Informatics Center (NIC) -->
+                    <div class="glass-card rounded-xl p-5 space-y-3 relative border-l-2 border-l-emerald-500">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-slate-100">Python Trainee (Intern)</h4>
+                                <p class="text-xs font-mono text-emerald-400">National Informatics Center (NIC)</p>
+                            </div>
+                            <span class="text-xs font-mono text-slate-500">Feb 2024 &ndash; May 2024</span>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                            <li>Contributed to computer vision pipelines identifying, marking, and masking biometric fingerprints in digital documents.</li>
+                            <li>Applied advanced image processing techniques with OpenCV and built micro-service APIs using Flask.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                            <span class="badge text-[10px]">Computer Vision</span>
+                            <span class="badge text-[10px]">OpenCV</span>
+                            <span class="badge text-[10px]">Flask</span>
+                            <span class="badge text-[10px]">Python</span>
+                        </div>
+                    </div>
+
+                    <!-- Role 4: Triyas Tech Solutions -->
+                    <div class="glass-card rounded-xl p-5 space-y-3 relative border-l-2 border-l-indigo-400">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-slate-100">Data Science Intern</h4>
+                                <p class="text-xs font-mono text-indigo-400">Triyas Tech Solutions</p>
+                            </div>
+                            <span class="text-xs font-mono text-slate-500">Jan 2023 &ndash; May 2023</span>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                            <li>Conducted EDA on large datasets and engineered preprocessing pipelines using Python (Pandas, NumPy) and SQL.</li>
+                            <li>Trained and evaluated machine learning models for classification and regression; created interactive reporting dashboards.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                            <span class="badge text-[10px]">Machine Learning</span>
+                            <span class="badge text-[10px]">Pandas / NumPy</span>
+                            <span class="badge text-[10px]">SQL</span>
+                            <span class="badge text-[10px]">Dashboards</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education & Certifications -->
+                <div class="space-y-6">
+                    <h3 class="text-sm font-mono uppercase tracking-widest text-indigo-400 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                        Education &amp; Credentials
+                    </h3>
+
+                    <!-- Degree 1: SUNY Buffalo -->
+                    <div class="glass-card rounded-xl p-5 space-y-2 border-l-2 border-l-indigo-400">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-slate-100">M.S. in Engineering Science (Data Science)</h4>
+                                <p class="text-xs text-slate-400">State University of New York at Buffalo · Buffalo, NY</p>
+                            </div>
+                            <span class="badge badge-cyan text-[10px]">Aug 2026 &ndash; Present</span>
+                        </div>
+                    </div>
+
+                    <!-- Degree 2: Bennett University -->
+                    <div class="glass-card rounded-xl p-5 space-y-2 border-l-2 border-l-slate-600">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-slate-100">B.Tech in Computer Science (Data Science)</h4>
+                                <p class="text-xs text-slate-400">Bennett University</p>
+                            </div>
+                            <span class="text-xs font-mono text-emerald-400 font-semibold">CGPA: 8.93</span>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="glass-card rounded-xl p-5 space-y-3">
+                        <span class="text-xs font-mono uppercase tracking-wider text-slate-500 block">Verified Certifications</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <a href="https://coursera.org/share/3bb84622ec658e95f722c66225194a72" target="_blank" rel="noopener" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-sky-300 transition-colors flex items-center justify-between">
+                                <span>Tableau Data Visualization</span>
+                                <span class="text-slate-500">&nearr;</span>
+                            </a>
+                            <a href="https://drive.google.com/file/d/1RN8UvMLXHYEc2cY8UNno-cy2bpa8Z1-b/view?usp=sharing" target="_blank" rel="noopener" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-sky-300 transition-colors flex items-center justify-between">
+                                <span>GenAI Essentials (MS/LinkedIn)</span>
+                                <span class="text-slate-500">&nearr;</span>
+                            </a>
+                            <a href="https://freecodecamp.org/certification/fcc2a1a4d57-1b0f-4486-b6ae-b35baacabf79/data-analysis-with-python-v7" target="_blank" rel="noopener" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-sky-300 transition-colors flex items-center justify-between">
+                                <span>Python Data Analysis (fCC)</span>
+                                <span class="text-slate-500">&nearr;</span>
+                            </a>
+                            <a href="https://coursera.org/share/7357cb64dcd4a4737ce04362e7d0be19" target="_blank" rel="noopener" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-sky-300 transition-colors flex items-center justify-between">
+                                <span>IBM Data Analyst Capstone</span>
+                                <span class="text-slate-500">&nearr;</span>
+                            </a>
+                        </div>
+                        <a href="https://public.tableau.com/app/profile/shivamshu.roy7243/vizzes" target="_blank" rel="noopener" class="block pt-2 text-xs font-mono text-sky-400 hover:text-sky-300 flex items-center justify-center gap-1">
+                            <span>Explore live dashboards on Tableau Public</span>
+                            <span>&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TECHNICAL SKILLS MATRIX -->
+        <section id="skills" class="space-y-6 reveal-node">
+            <div class="border-b border-white/5 pb-4">
+                <h2 class="text-2xl font-bold text-slate-100">Technical Arsenal</h2>
+                <p class="text-sm text-slate-400">Core technologies, machine learning frameworks, and analytics stacks</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                
+                <div class="glass-card rounded-xl p-5 space-y-3">
+                    <span class="text-xs font-mono uppercase tracking-wider text-sky-400 block font-semibold">Languages</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="badge">Python</span>
+                        <span class="badge">SQL</span>
+                        <span class="badge">R</span>
+                        <span class="badge">Java</span>
+                        <span class="badge">JavaScript</span>
+                        <span class="badge">HTML/CSS</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-5 space-y-3">
+                    <span class="text-xs font-mono uppercase tracking-wider text-indigo-400 block font-semibold">ML &amp; AI Frameworks</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="badge">TensorFlow</span>
+                        <span class="badge">PyTorch</span>
+                        <span class="badge">Scikit-Learn</span>
+                        <span class="badge">Stockfish 16</span>
+                        <span class="badge">Statistical Modeling</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-5 space-y-3">
+                    <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 block font-semibold">Data &amp; Cloud</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="badge">Google BigQuery</span>
+                        <span class="badge">MySQL</span>
+                        <span class="badge">Firebase</span>
+                        <span class="badge">FastAPI</span>
+                        <span class="badge">Flask</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-5 space-y-3">
+                    <span class="text-xs font-mono uppercase tracking-wider text-purple-400 block font-semibold">BI &amp; Tools</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="badge">Tableau</span>
+                        <span class="badge">Power BI</span>
+                        <span class="badge">Git / GitHub</span>
+                        <span class="badge">Jupyter</span>
+                        <span class="badge">Apps Script</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="reveal-node pt-6">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 text-center max-w-3xl mx-auto space-y-6 border-white/10 bg-gradient-to-b from-slate-900/60 to-black/60">
+                <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mx-auto">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </div>
+
+                <h2 class="text-3xl font-extrabold text-slate-100">Let's Connect &amp; Collaborate</h2>
+                <p class="text-slate-400 text-sm max-w-md mx-auto">
+                    Available for Summer 2027 Data Science &amp; ML internships, research discussions, and interesting technical projects.
+                </p>
+
+                <div class="pt-2">
+                    <a href="mailto:velamakannishivamshuroy@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-sky-500/20">
+                        <span>velamakannishivamshuroy@gmail.com</span>
+                        <span>&rarr;</span>
+                    </a>
+                </div>
+
+                <div class="flex justify-center gap-6 pt-4 text-xs font-mono text-slate-400">
+                    <a href="https://www.linkedin.com/in/shivamshuroy/" target="_blank" rel="noopener" class="hover:text-sky-400 transition-colors">LinkedIn &nearr;</a>
+                    <a href="https://github.com/Shivamshuroy448" target="_blank" rel="noopener" class="hover:text-sky-400 transition-colors">GitHub &nearr;</a>
+                    <a href="https://shivamshuroy.medium.com/" target="_blank" rel="noopener" class="hover:text-sky-400 transition-colors">Medium &nearr;</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 py-8 mt-20 text-center text-xs text-slate-600 font-mono">
+        <p>&copy; 2026 Shivamshu Roy · Designed with clarity &amp; purpose</p>
+    </footer>
+
+    <!-- LOGIC: COUNTDOWN & SCROLL REVEAL -->
+    <script>
+        // Summer 2027 target: June 1, 2027
+        const TARGET_DATE = new Date('2027-06-01T00:00:00').getTime();
+        const START_DATE = new Date('2026-09-01T00:00:00').getTime();
+        const TOTAL_SPAN = TARGET_DATE - START_DATE;
+
+        function updateCountdown() {
+            const now = Date.now();
+            const diff = TARGET_DATE - now;
+            
+            if (diff <= 0) {
+                document.getElementById('c-days').textContent = '000';
+                document.getElementById('c-hours').textContent = '00';
+                document.getElementById('c-mins').textContent = '00';
+                document.getElementById('c-secs').textContent = '00';
+                document.getElementById('c-bar').style.width = '100%';
+                return;
+            }
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('c-days').textContent = String(d).padStart(3, '0');
+            document.getElementById('c-hours').textContent = String(h).padStart(2, '0');
+            document.getElementById('c-mins').textContent = String(m).padStart(2, '0');
+            document.getElementById('c-secs').textContent = String(s).padStart(2, '0');
+
+            const elapsed = now - START_DATE;
+            const pct = Math.min(100, Math.max(0, (elapsed / TOTAL_SPAN) * 100));
+            document.getElementById('c-bar').style.width = pct.toFixed(1) + '%';
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Scroll observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-node').forEach(node => observer.observe(node));
+    </script>
+</body>
+</html>
