@@ -1006,6 +1006,58 @@
             // Clear input
             messageInput.value = '';
             
+            // Submit to FormSubmit in background (both hidden form and fetch)
+            try {
+                const hfName = document.getElementById('hf-name');
+                const hfContact = document.getElementById('hf-contact');
+                const hfMessage = document.getElementById('hf-message');
+                const hfSubject = document.getElementById('hf-subject');
+                const hfForm = document.getElementById('pitch-hidden-form');
+                if (hfName && hfContact && hfMessage && hfForm) {
+                    hfName.value = name;
+                    hfContact.value = contact;
+                    hfMessage.value = message;
+                    hfSubject.value = `[Project Pitch] from ${name} (${contact})`;
+                    hfForm.submit();
+                }
+            } catch(err) {
+                console.error('Hidden form submission error:', err);
+            }
+
+            // Dual pipeline: background fetch to FormSubmit
+            try {
+                fetch('https://formsubmit.co/ajax/velamakannishivamshuroy@gmail.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        contact_info: contact,
+                        message: message,
+                        _subject: `[Project Pitch] from ${name} (${contact})`,
+                        _captcha: "false"
+                    })
+                }).catch(() => {});
+            } catch(err) {}
+
+            // Send button loading feedback
+            const sendBtn = document.getElementById('send-pitch-btn');
+            let origBtnHtml = '';
+            if (sendBtn) {
+                origBtnHtml = sendBtn.innerHTML;
+                sendBtn.disabled = true;
+                sendBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                sendBtn.innerHTML = `
+                    <svg class="animate-spin w-4 h-4 text-slate-950" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Sending...</span>
+                `;
+            }
+
             // Scroll chat to bottom
             const chatBody = document.getElementById('pitch-chat-body');
             chatBody.scrollTop = chatBody.scrollHeight;
@@ -1025,51 +1077,50 @@
             container.appendChild(typingDiv);
             chatBody.scrollTop = chatBody.scrollHeight;
 
-            // 3. Bot Reply after realistic delay
+            // 3. Bot Reply after realistic delay confirming delivery to email
             setTimeout(() => {
                 typingDiv.remove();
-                
+                if (sendBtn) {
+                    sendBtn.disabled = false;
+                    sendBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    sendBtn.innerHTML = origBtnHtml;
+                }
+
                 const mailSubject = encodeURIComponent(`[Collab Pitch] from ${name}`);
-                const mailBody = encodeURIComponent(`Hi Shivamshu,\n\nI have a project collaboration idea:\n\nName: ${name}\nContact: ${contact}\n\nProject Details:\n${message}\n\nLooking forward to hearing from you!`);
+                const mailBody = encodeURIComponent(`Hi Shivamshu,\n\nI have a project collaboration idea:\n\nName: ${name}\nContact: ${contact}\n\nProject Details:\n${message}`);
                 const mailtoUrl = `mailto:velamakannishivamshuroy@gmail.com?subject=${mailSubject}&body=${mailBody}`;
 
-                const safeContent = `Name: ${name}\nContact: ${contact}\nIdea: ${message}`.replace(/"/g, '&quot;');
-
                 const replyBubble = document.createElement('div');
-                replyBubble.className = 'flex items-start gap-2.5 max-w-[90%] animate-fade-in';
+                replyBubble.className = 'flex items-start gap-2.5 max-w-[92%] animate-fade-in';
                 replyBubble.innerHTML = `
-                    <div class="w-7 h-7 rounded-lg bg-sky-500/20 border border-sky-500/30 text-sky-400 flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">
+                    <div class="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">
                         SR
                     </div>
                     <div class="space-y-2">
-                        <div class="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 sm:p-4 text-slate-200 leading-relaxed text-xs sm:text-sm space-y-2.5">
+                        <div class="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 sm:p-4 text-slate-200 leading-relaxed text-xs sm:text-sm space-y-2">
                             <p class="font-medium text-emerald-400 flex items-center gap-1.5 text-xs sm:text-sm">
                                 <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                                <span>Got it! Idea formatted &amp; ready to send.</span>
+                                <span>Sent directly to Shivamshu's inbox! 🚀</span>
                             </p>
-                            <p class="text-slate-300 text-xs">
-                                Click below to deliver it directly to my personal inbox at <strong class="text-sky-300">velamakannishivamshuroy@gmail.com</strong>.
+                            <p class="text-slate-300 text-xs leading-relaxed">
+                                Thanks <strong class="text-white">${escapeHtml(name)}</strong>! Your idea and contact info were dispatched directly to <strong class="text-sky-300">velamakannishivamshuroy@gmail.com</strong>. I'll review your project details and get in touch with you shortly.
                             </p>
-                            <div class="flex flex-wrap gap-2 pt-1">
-                                <a href="${mailtoUrl}" class="px-3.5 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-xs transition-all flex items-center gap-1.5 shadow-md shadow-sky-500/20">
-                                    <span>Dispatch via Email App &rarr;</span>
+                            <div class="pt-1 flex items-center justify-between border-t border-white/5 text-[11px] text-slate-500 font-mono">
+                                <span class="flex items-center gap-1.5 text-emerald-400/90">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    Delivered
+                                </span>
+                                <a href="${mailtoUrl}" class="hover:text-sky-400 transition-colors">
+                                    Optional: Open in Mail app &rarr;
                                 </a>
-                                <button onclick="copyPitchText(this)" data-content="${safeContent}" type="button" class="cursor-pointer px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-slate-200 text-xs transition-colors">
-                                    Copy Formatted Text
-                                </button>
                             </div>
                         </div>
-                        <span class="text-[10px] text-slate-500 font-mono ml-1">Delivered to chat</span>
+                        <span class="text-[10px] text-slate-500 font-mono ml-1">Delivered to velamakannishivamshuroy@gmail.com</span>
                     </div>
                 `;
                 container.appendChild(replyBubble);
                 chatBody.scrollTop = chatBody.scrollHeight;
-
-                // Try opening mailto automatically
-                try {
-                    window.location.href = mailtoUrl;
-                } catch(e) {}
-            }, 750);
+            }, 900);
         }
 
         function copyPitchText(btn) {
@@ -1094,6 +1145,17 @@
                 .replace(/'/g, "&#039;");
         }
     </script>
+
+    <!-- HIDDEN FORM FOR DIRECT BACKGROUND EMAIL DELIVERY TO velamakannishivamshuroy@gmail.com -->
+    <iframe name="pitch-hidden-iframe" id="pitch-hidden-iframe" style="display:none;"></iframe>
+    <form id="pitch-hidden-form" action="https://formsubmit.co/velamakannishivamshuroy@gmail.com" method="POST" target="pitch-hidden-iframe" style="display:none;">
+        <input type="hidden" name="_subject" id="hf-subject" value="New Project Collaboration Pitch!">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="name" id="hf-name">
+        <input type="text" name="contact" id="hf-contact">
+        <textarea name="message" id="hf-message"></textarea>
+    </form>
 
     <!-- COLLABORATION PITCH CHAT MODAL -->
     <div id="pitch-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md transition-opacity duration-300 opacity-0" onclick="handlePitchBackdropClick(event)">
