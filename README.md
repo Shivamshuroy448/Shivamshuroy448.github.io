@@ -1,7 +1,5 @@
 # 🚀 Shivamshu Roy — Portfolio Deployment Guide
 
-Your production-ready portfolio is prepared inside:
-`/Users/roy/.gemini/antigravity/scratch/portfolio/index.html`
 
 ---
 
@@ -15,9 +13,9 @@ Since your GitHub username is **`Shivamshuroy448`**, you can host this permanent
 3. Keep it **Public** and click **Create repository**.
 
 ### Step 2: Push Your Code
-Open your terminal in `/Users/roy/.gemini/antigravity/scratch/portfolio`:
+Open your terminal in `/Users/roy/scratch/portfolio`:
 ```bash
-cd /Users/roy/.gemini/antigravity/scratch/portfolio
+cd /Users/roy/scratch/portfolio
 git init
 git add index.html
 git commit -m "feat: Initial release of modern portfolio"
@@ -43,5 +41,5 @@ Your site will be live at `https://shivamshuroy448.github.io` in under 60 second
 To make the **Resume (PDF)** button work:
 1. Export your latest Overleaf resume as a PDF.
 2. Rename the file to **`resume.pdf`**.
-3. Place it in `/Users/roy/.gemini/antigravity/scratch/portfolio/resume.pdf`.
+3. Place it in `/Users/roy/scratch/portfolio/resume.pdf`.
 4. Commit and push it alongside `index.html`!
