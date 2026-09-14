@@ -904,12 +904,6 @@
             const wordEl = document.getElementById('intro-word');
             if (!curtain || !wordEl) return;
 
-            // Check if already seen in this session
-            if (sessionStorage.getItem('intro_seen')) {
-                curtain.style.display = 'none';
-                return;
-            }
-
             const greetings = [
                 "Hello",
                 "Bonjour",
@@ -928,7 +922,6 @@
             window.dismissIntro = function() {
                 if (dismissed) return;
                 dismissed = true;
-                sessionStorage.setItem('intro_seen', 'true');
                 curtain.classList.add('shutter-curtain');
                 setTimeout(() => {
                     curtain.style.display = 'none';
