@@ -160,9 +160,36 @@
         .animate-fade-in {
             animation: fadeIn 0.25s ease-out forwards;
         }
+
+        /* Shutter Up Preloader */
+        @keyframes shutterUp {
+            0% {
+                transform: translateY(0%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+        .shutter-curtain {
+            animation: shutterUp 0.85s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+        }
     </style>
 </head>
 <body class="ambient-grid min-h-screen">
+
+    <!-- MULTILINGUAL GREETING PRELOADER / SHUTTER REVEAL -->
+    <div id="intro-curtain" class="fixed inset-0 bg-[#0b0d13] z-[99999] flex flex-col items-center justify-center cursor-pointer select-none" onclick="dismissIntro()">
+        <div class="flex items-center gap-3 sm:gap-4">
+            <span class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-sky-400 shadow-[0_0_16px_#38bdf8] animate-pulse"></span>
+            <h1 id="intro-word" class="text-white text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight font-sans transition-opacity duration-150">
+                Hello
+            </h1>
+        </div>
+        <div class="absolute bottom-8 text-[11px] font-mono uppercase tracking-widest text-slate-600 flex items-center gap-2">
+            <span>Tap anywhere to skip</span>
+            <span class="text-slate-500">&rarr;</span>
+        </div>
+    </div>
 
     <!-- Top Navigation -->
     <header class="sticky top-0 z-50 backdrop-blur-md bg-[#0b0d13]/80 border-b border-white/5">
@@ -871,6 +898,66 @@
 
     <!-- LOGIC: COUNTDOWN & SCROLL REVEAL -->
     <script>
+        // Multilingual Greeting Preloader Logic
+        (function initIntroCurtain() {
+            const curtain = document.getElementById('intro-curtain');
+            const wordEl = document.getElementById('intro-word');
+            if (!curtain || !wordEl) return;
+
+            // Check if already seen in this session
+            if (sessionStorage.getItem('intro_seen')) {
+                curtain.style.display = 'none';
+                return;
+            }
+
+            const greetings = [
+                "Hello",
+                "Bonjour",
+                "Hola",
+                "नमस्ते",
+                "Ciao",
+                "Olá",
+                "こんにちは",
+                "Guten Tag",
+                "Hello"
+            ];
+
+            let index = 0;
+            let dismissed = false;
+
+            window.dismissIntro = function() {
+                if (dismissed) return;
+                dismissed = true;
+                sessionStorage.setItem('intro_seen', 'true');
+                curtain.classList.add('shutter-curtain');
+                setTimeout(() => {
+                    curtain.style.display = 'none';
+                }, 900);
+            };
+
+            // Keyboard shortcut (Escape, Space, Enter) to skip
+            document.addEventListener('keydown', function onIntroKey(e) {
+                if (['Escape', ' ', 'Enter'].includes(e.key) && !dismissed) {
+                    window.dismissIntro();
+                }
+            });
+
+            // Cycle through greetings
+            function nextGreeting() {
+                if (dismissed) return;
+                if (index < greetings.length - 1) {
+                    index++;
+                    wordEl.textContent = greetings[index];
+                    setTimeout(nextGreeting, 160);
+                } else {
+                    // Final greeting held briefly, then shutter slides up
+                    setTimeout(window.dismissIntro, 240);
+                }
+            }
+
+            setTimeout(nextGreeting, 160);
+        })();
+
         // Target: May 1, 2027
         const TARGET_DATE = new Date('2027-05-01T00:00:00').getTime();
         const START_DATE = new Date('2026-09-01T00:00:00').getTime();
