@@ -141,6 +141,19 @@
             }
         }
 
+        @keyframes glass-shimmer {
+            0% {
+                transform: translateX(-150%) skewX(-20deg);
+            }
+            35%, 100% {
+                transform: translateX(250%) skewX(-20deg);
+            }
+        }
+
+        .status-shimmer {
+            animation: glass-shimmer 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
         .code-font {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         }
@@ -208,11 +221,41 @@
                 </div>
             </a>
 
-            <div class="flex items-center gap-4">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-medium text-emerald-400">
-                    <span class="pulse-beacon"></span>
-                    <span class="lowercase">available for work</span>
+            <div class="flex items-center gap-3 sm:gap-4">
+                <div class="relative group">
+                    <a href="#contact" class="relative overflow-hidden inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-[11px] sm:text-xs font-medium text-emerald-300 hover:text-emerald-200 hover:border-emerald-500/50 hover:bg-emerald-500/20 transition-all duration-300 shadow-[0_0_16px_rgba(16,185,129,0.12)]">
+                        <!-- Glass Shimmer Light Sweep -->
+                        <div class="absolute inset-0 pointer-events-none status-shimmer bg-gradient-to-r from-transparent via-white/15 to-transparent"></div>
+                        
+                        <span class="pulse-beacon shrink-0"></span>
+                        <span class="tracking-tight whitespace-nowrap">open to summer '27 internships</span>
+                    </a>
+
+                    <!-- Interactive Live Status Popover (Hover/Focus) -->
+                    <div class="absolute right-0 sm:right-auto sm:left-0 top-full mt-2.5 w-72 p-3.5 rounded-2xl bg-[#0e0e12]/95 border border-white/10 backdrop-blur-xl shadow-2xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
+                        <div class="flex items-center justify-between pb-2.5 border-b border-white/10 text-[11px]">
+                            <span class="flex items-center gap-1.5 text-zinc-400">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                Buffalo, NY (EST)
+                            </span>
+                            <span id="live-local-time" class="font-mono text-zinc-300 text-[10px]">--:-- --</span>
+                        </div>
+                        <div class="py-2.5 space-y-1">
+                            <p class="text-[11px] text-zinc-400">Seeking Roles:</p>
+                            <p class="text-xs text-white font-medium">Data Scientist · ML Engineer Intern</p>
+                            <p class="text-[10px] text-zinc-500 font-mono pt-0.5">MS Data Science @ SUNY Buffalo (Dec '27)</p>
+                        </div>
+                        <div class="pt-2 border-t border-white/10 flex items-center gap-2">
+                            <button type="button" onclick="navigator.clipboard.writeText('velamakannishivamshuroy@gmail.com'); this.querySelector('span').textContent='Copied! ✓'; setTimeout(() => this.querySelector('span').textContent='Copy Email', 2000)" class="w-full py-1.5 px-3 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white text-[11px] font-medium transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                                <span>Copy Email</span>
+                            </button>
+                            <a href="#contact" class="w-full py-1.5 px-3 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 text-emerald-300 text-[11px] font-medium transition-all flex items-center justify-center text-center">
+                                Connect
+                            </a>
+                        </div>
+                    </div>
                 </div>
+
                 <a href="#contact" class="hidden sm:inline-flex px-3.5 py-1.5 rounded-full bg-white text-black hover:bg-zinc-200 transition-all text-xs font-medium">
                     Get in Touch
                 </a>
@@ -1074,6 +1117,28 @@
             }
 
             setTimeout(nextGreeting, 160);
+        })();
+
+        // Live Buffalo, NY (EST) Clock for Status Badge
+        (function initLiveStatusTime() {
+            function updateTime() {
+                const el = document.getElementById('live-local-time');
+                if (!el) return;
+                try {
+                    const now = new Date();
+                    const estTime = now.toLocaleTimeString('en-US', {
+                        timeZone: 'America/New_York',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true
+                    });
+                    el.textContent = estTime + ' EST';
+                } catch (e) {
+                    el.textContent = 'EST';
+                }
+            }
+            updateTime();
+            setInterval(updateTime, 1000);
         })();
 
         // Target: May 1, 2027
