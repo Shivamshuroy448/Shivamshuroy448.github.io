@@ -1214,12 +1214,6 @@
             const wordEl = document.getElementById('intro-word');
             if (!curtain || !wordEl) return;
 
-            // Session check: skip preloader entirely for returning visitors in the same session
-            if (sessionStorage.getItem('sr_intro_seen') === '1') {
-                curtain.style.display = 'none';
-                return;
-            }
-
             const greetings = [
                 "Hello",
                 "Bonjour",
@@ -1238,7 +1232,6 @@
             window.dismissIntro = function() {
                 if (dismissed) return;
                 dismissed = true;
-                sessionStorage.setItem('sr_intro_seen', '1');
                 curtain.classList.add('shutter-curtain');
                 setTimeout(() => {
                     curtain.style.display = 'none';
