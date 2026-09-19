@@ -629,7 +629,7 @@
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            High-performance chess analysis platform executing <span class="text-slate-100 font-medium">Stockfish 16 NNUE</span> client-side via WebAssembly (WASM). Features multi-threaded Web Workers for zero-blocking 60fps UI rendering, in-memory UCI protocol evaluations, dynamic candidate move depth trees (24+ plies), and $0 cloud compute overhead.
+                            High-performance chess analysis platform executing <span class="text-slate-100 font-medium">Stockfish 16 NNUE</span> client-side via WebAssembly (WASM). Features multi-threaded Web Workers utilizing <span class="text-slate-100 font-medium">SharedArrayBuffer</span> to isolate 24-ply alpha-beta minimax search from the DOM, guaranteeing zero-blocking 60fps React UI rendering with sub-15ms edge inference ($0 cloud compute).
                         </p>
 
                         <!-- Live Mini Demo Metric Visualizer -->
@@ -643,8 +643,8 @@
                                 <div class="bg-slate-700 h-full w-[15%]"></div>
                             </div>
                             <div class="text-[11px] text-slate-400 flex items-center justify-between pt-1">
-                                <span>Evaluation Depth</span>
-                                <span class="text-sky-400 font-semibold">24+ Plies · Multi-Threaded Workers</span>
+                                <span>Concurrency &amp; Threads</span>
+                                <span class="text-sky-400 font-semibold">SharedArrayBuffer · Web Workers</span>
                             </div>
                         </div>
                     </div>
@@ -652,6 +652,7 @@
                     <div class="flex flex-wrap gap-1.5 pt-2">
                         <span class="badge">WebAssembly</span>
                         <span class="badge">Stockfish 16 NNUE</span>
+                        <span class="badge">SharedArrayBuffer</span>
                         <span class="badge">Web Workers</span>
                         <span class="badge">React</span>
                         <span class="badge">Python</span>
@@ -725,30 +726,31 @@
                             <h3 class="text-xl font-bold text-slate-100 group-hover:text-emerald-400 transition-colors">
                                 Green Grid AI
                             </h3>
-                            <p class="text-xs font-mono text-slate-500 mt-0.5">EV Charging Demand &amp; Spatial Placement Optimization</p>
+                            <p class="text-xs font-mono text-slate-500 mt-0.5">EV Demand Forecasting &amp; Constrained Facility Location Optimization</p>
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            Municipal EV charging demand forecasting and optimal spatial placement system across a 17,280-record hourly dataset (2 years sensor telemetry). Validated via expanding-window temporal cross-validation (<span class="text-slate-100 font-medium">TimeSeriesSplit</span>) to eliminate lookahead data leakage, integrating spatial lag features and traffic density.
+                            Dual-stage municipal EV infrastructure engine: couples an <span class="text-slate-100 font-medium">XGBoost demand regression model</span> (R² = 0.89 across 17,280 hourly sensor records, validated via leakage-free <span class="text-slate-100 font-medium">TimeSeriesSplit</span>) with a <span class="text-slate-100 font-medium">Constrained Spatial Clustering &amp; Facility Location algorithm</span> (P-Median / Voronoi) balancing grid capacity and traffic density.
                         </p>
 
                         <!-- Stat Box -->
                         <div class="grid grid-cols-2 gap-3 bg-black/30 rounded-xl p-3.5 border border-white/5 text-xs font-mono">
                             <div>
-                                <span class="text-slate-500 block text-[10px]">DATASET SCALE</span>
-                                <span class="text-slate-200 font-bold text-sm">17,280 Hourly Records</span>
+                                <span class="text-slate-500 block text-[10px]">DEMAND REGRESSION</span>
+                                <span class="text-emerald-400 font-bold text-sm">R² = 0.89 (XGBoost)</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[10px]">MODEL BENCHMARK</span>
-                                <span class="text-emerald-400 font-bold text-sm">R² = 0.89 (XGBoost)</span>
+                                <span class="text-slate-500 block text-[10px]">PLACEMENT OPTIMIZATION</span>
+                                <span class="text-sky-300 font-bold text-sm">Spatial Facility Location</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex flex-wrap gap-1.5 pt-2">
                         <span class="badge">XGBoost</span>
+                        <span class="badge">Facility Location / OR</span>
                         <span class="badge">TimeSeriesSplit</span>
-                        <span class="badge">Spatial-Temporal</span>
+                        <span class="badge">Geospatial Clustering</span>
                         <span class="badge">Scikit-Learn</span>
                         <span class="badge">Python</span>
                     </div>
@@ -769,7 +771,7 @@
                             Improving Stock Market Forecasting Using Advanced Time Series Analysis Techniques
                         </h3>
                         <p class="text-sm text-slate-400 leading-relaxed">
-                            Presented at the <strong class="text-slate-300">CVMI-2023</strong> conference and published in IEEE Xplore. Engineered parameter-optimized adaptive smoothing and autoregressive models, achieving an <strong class="text-slate-300">~18% reduction in out-of-sample forecast error (RMSE/MAE)</strong> over classical ARIMA and exponential smoothing baselines across multi-year volatile equity regimes.
+                            Presented at the <strong class="text-slate-300">CVMI-2023</strong> conference and published in IEEE Xplore. Formulated a <strong class="text-slate-300">Nelder-Mead simplex optimization algorithm</strong> to dynamically calibrate smoothing constants (&alpha;, &beta;, &gamma;) and autoregressive coefficients across non-stationary regimes, achieving an <strong class="text-slate-300">~18% reduction in out-of-sample forecast error (RMSE/MAE)</strong> over standard ARIMA and Holt-Winters baselines.
                         </p>
                     </div>
 
@@ -1400,15 +1402,15 @@
         const SHIVAMSHU_AI_PROMPT = `Candidate Dossier — Shivamshu Roy (Portfolio: https://shivamshuroy.is-a.dev)
 • Education: Incoming M.S. in Data Science at State University of New York at Buffalo (Aug 2026 – Dec 2027 grad; 8.93/10.0 undergrad CGPA).
 • Target: Seeking Summer 2027 Data Science & Machine Learning Engineering Internships.
-• Published Research: First-author paper published in IEEE Xplore (CVMI-2023) on financial time-series forecasting, achieving ~18% error reduction over classical baselines via parameter-optimized smoothing models.
+• Published Research: First-author paper published in IEEE Xplore (CVMI-2023) on financial time-series forecasting, achieving ~18% error reduction over classical baselines via Nelder-Mead simplex parameter optimization.
 • Industry Roles:
   1. Data Scientist @ Nxtwave: Automated BigQuery & SQL ETL across 500k+ transactional records, cutting report latency by 40%.
   2. Data Science Intern @ TCS: Automated EDA & multivariate modeling pipelines, reducing feature prep time by 30%.
   3. Python Trainee @ National Informatics Center: OpenCV computer vision pipelines redacting biometrics at 98%+ precision.
 • Key Projects:
-  - CheckmateLab: High-performance Stockfish 16 NNUE chess engine compiled to WebAssembly (WASM), running multi-threaded Web Workers with <15ms edge inference ($0 cloud cost).
+  - CheckmateLab: High-performance Stockfish 16 NNUE chess engine compiled to WebAssembly (WASM), running multi-threaded Web Workers with SharedArrayBuffer for <15ms edge inference ($0 cloud cost).
   - ClearHire AI: Production GenAI email pipeline with Pydantic-enforced structured JSON schemas and zero-shot stage classification (98.4% F1).
-  - Green Grid AI: EV demand forecasting with TimeSeriesSplit cross-validation across 17,280 hourly records (XGBoost R²=0.89).
+  - Green Grid AI: EV demand forecasting with TimeSeriesSplit (XGBoost R²=0.89) combined with constrained spatial facility location optimization.
 • Core Stack: Python, SQL, C++, PyTorch, Scikit-Learn, XGBoost, Docker, BigQuery, PostgreSQL, Tableau.
 
 As an AI assistant, please provide:
