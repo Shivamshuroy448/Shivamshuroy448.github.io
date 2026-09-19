@@ -158,16 +158,53 @@
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         }
 
-        /* Subtle scroll reveal */
+        /* Apple / Framer Fluid Scroll Reveal with Spring Easing & Optical Un-blur */
         .reveal-node {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(28px);
+            filter: blur(4px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                        filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform, filter;
         }
 
         .reveal-node.revealed {
             opacity: 1;
             transform: translateY(0);
+            filter: blur(0px);
+        }
+
+        /* Staggered card & child cascade */
+        .reveal-child {
+            opacity: 0;
+            transform: translateY(22px);
+            filter: blur(3px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform, filter;
+        }
+
+        .reveal-node.revealed .reveal-child {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0px);
+        }
+
+        .reveal-node.revealed .reveal-child:nth-child(1) { transition-delay: 0.05s; }
+        .reveal-node.revealed .reveal-child:nth-child(2) { transition-delay: 0.14s; }
+        .reveal-node.revealed .reveal-child:nth-child(3) { transition-delay: 0.23s; }
+        .reveal-node.revealed .reveal-child:nth-child(4) { transition-delay: 0.32s; }
+        .reveal-node.revealed .reveal-child:nth-child(5) { transition-delay: 0.41s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-node,
+            .reveal-child {
+                transition: opacity 0.25s ease !important;
+                transform: none !important;
+                filter: none !important;
+            }
         }
 
         @keyframes fadeIn {
@@ -270,7 +307,7 @@
             <div class="relative w-full max-w-5xl mx-auto flex flex-col items-center">
                 
                 <!-- Seamless Cutout Portrait (Prominent & Enchanced Scale, fading directly into dark canvas) -->
-                <div class="relative z-10 w-[320px] sm:w-[440px] md:w-[540px] lg:w-[600px] aspect-square -mb-16 sm:-mb-28 md:-mb-40 lg:-mb-48">
+                <div id="hero-portrait-wrap" class="relative z-10 w-[320px] sm:w-[440px] md:w-[540px] lg:w-[600px] aspect-square -mb-16 sm:-mb-28 md:-mb-40 lg:-mb-48 will-change-transform">
                     <!-- Subtle soft spotlight behind subject -->
                     <div class="absolute inset-0 bg-radial from-white/[0.08] via-white/[0.01] to-transparent rounded-full blur-3xl scale-95 pointer-events-none"></div>
                     
@@ -281,7 +318,7 @@
                 </div>
 
                 <!-- Giant Statement Name Layer (Overlapping lower chest, with padding to prevent any glyph clipping) -->
-                <div class="relative z-20 w-full text-center px-4 sm:px-8 overflow-visible">
+                <div id="hero-title-wrap" class="relative z-20 w-full text-center px-4 sm:px-8 overflow-visible will-change-transform">
                     <h1 class="inline-block text-center font-black tracking-[-0.035em] leading-[0.96] pb-3 pr-3 select-none text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-600 text-[13vw] sm:text-[11vw] md:text-[9vw] lg:text-[122px]">
                         Shivamshu Roy
                     </h1>
@@ -497,7 +534,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
                 <!-- Project 1: CheckmateLab -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6 group">
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6 group reveal-child">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
                             <span class="badge badge-cyan">
@@ -546,7 +583,7 @@
                 </div>
 
                 <!-- Project 2: ClearHire AI -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6 group border-indigo-500/20">
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6 group border-indigo-500/20 reveal-child">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
                             <span class="badge" style="border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.1);color:#a5b4fc;">
@@ -595,7 +632,7 @@
                 </div>
 
                 <!-- Project 3: Green Grid AI -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6 group">
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6 group reveal-child">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
                             <span class="badge badge-emerald">
@@ -729,7 +766,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 <!-- Article 1 -->
-                <a href="https://shivamshuroy.medium.com/there-is-an-odd-sort-of-guilt-that-accompanies-starting-a-masters-degree-429dc7a6bf80" target="_blank" rel="noopener" class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4 group">
+                <a href="https://shivamshuroy.medium.com/there-is-an-odd-sort-of-guilt-that-accompanies-starting-a-masters-degree-429dc7a6bf80" target="_blank" rel="noopener" class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4 group reveal-child">
                     <div class="space-y-3">
                         <div class="flex items-center justify-between text-xs font-mono text-slate-500">
                             <span class="badge badge-cyan text-[11px]">Grad School · Mindset</span>
@@ -752,7 +789,7 @@
                 </a>
 
                 <!-- Article 2 -->
-                <a href="https://shivamshuroy.medium.com/i-got-tired-of-paying-for-chess-subscriptions-so-i-built-my-own-browser-engine-923a23a7cc03" target="_blank" rel="noopener" class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4 group">
+                <a href="https://shivamshuroy.medium.com/i-got-tired-of-paying-for-chess-subscriptions-so-i-built-my-own-browser-engine-923a23a7cc03" target="_blank" rel="noopener" class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4 group reveal-child">
                     <div class="space-y-3">
                         <div class="flex items-center justify-between text-xs font-mono text-slate-500">
                             <span class="badge badge-emerald text-[11px]">Chess AI · Systems</span>
@@ -775,7 +812,7 @@
                 </a>
 
                 <!-- Article 3 -->
-                <a href="https://medium.com/@shivamshuroy/unravelling-the-impact-of-noisy-data-on-exploratory-data-analysis-70cd343be176" target="_blank" rel="noopener" class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4 group">
+                <a href="https://medium.com/@shivamshuroy/unravelling-the-impact-of-noisy-data-on-exploratory-data-analysis-70cd343be176" target="_blank" rel="noopener" class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4 group reveal-child">
                     <div class="space-y-3">
                         <div class="flex items-center justify-between text-xs font-mono text-slate-500">
                             <span class="badge badge-violet text-[11px]">Data Science · EDA</span>
@@ -798,7 +835,7 @@
                 </a>
 
                 <!-- Article 4 -->
-                <a href="https://medium.com/@shivamshuroy/geozapp-evc-india-ce7760adcb0f" target="_blank" rel="noopener" class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4 group">
+                <a href="https://medium.com/@shivamshuroy/geozapp-evc-india-ce7760adcb0f" target="_blank" rel="noopener" class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4 group reveal-child">
                     <div class="space-y-3">
                         <div class="flex items-center justify-between text-xs font-mono text-slate-500">
                             <span class="badge badge-amber text-[11px]">EV Tech · Geospatial</span>
@@ -840,7 +877,7 @@
                     </h3>
 
                     <!-- Role 1: Nxtwave -->
-                    <div class="glass-card rounded-xl p-5 space-y-3 relative border-l-2 border-l-sky-400">
+                    <div class="glass-card rounded-xl p-5 space-y-3 relative border-l-2 border-l-sky-400 reveal-child">
                         <div class="flex justify-between items-start">
                             <div>
                                 <h4 class="font-bold text-slate-100">Data Scientist</h4>
@@ -855,7 +892,7 @@
                     </div>
 
                     <!-- Role 2: TCS -->
-                    <div class="glass-card rounded-xl p-5 space-y-3 relative border-l-2 border-l-slate-600">
+                    <div class="glass-card rounded-xl p-5 space-y-3 relative border-l-2 border-l-slate-600 reveal-child">
                         <div class="flex justify-between items-start">
                             <div>
                                 <h4 class="font-bold text-slate-100">Data Science Intern</h4>
@@ -870,7 +907,7 @@
                     </div>
 
                     <!-- Role 3: National Informatics Center (NIC) -->
-                    <div class="glass-card rounded-xl p-5 space-y-3 relative border-l-2 border-l-emerald-500">
+                    <div class="glass-card rounded-xl p-5 space-y-3 relative border-l-2 border-l-emerald-500 reveal-child">
                         <div class="flex justify-between items-start">
                             <div>
                                 <h4 class="font-bold text-slate-100">Python Trainee (Intern)</h4>
@@ -891,7 +928,7 @@
                     </div>
 
                     <!-- Role 4: Triyas Tech Solutions -->
-                    <div class="glass-card rounded-xl p-5 space-y-3 relative border-l-2 border-l-indigo-400">
+                    <div class="glass-card rounded-xl p-5 space-y-3 relative border-l-2 border-l-indigo-400 reveal-child">
                         <div class="flex justify-between items-start">
                             <div>
                                 <h4 class="font-bold text-slate-100">Data Science Intern</h4>
@@ -920,7 +957,7 @@
                     </h3>
 
                     <!-- Degree 1: SUNY Buffalo -->
-                    <div class="glass-card rounded-xl p-5 space-y-2 border-l-2 border-l-indigo-400">
+                    <div class="glass-card rounded-xl p-5 space-y-2 border-l-2 border-l-indigo-400 reveal-child">
                         <div class="flex justify-between items-start gap-3">
                             <div>
                                 <h4 class="font-bold text-slate-100">M.S. in Engineering Science (Data Science)</h4>
@@ -931,7 +968,7 @@
                     </div>
 
                     <!-- Degree 2: Bennett University -->
-                    <div class="glass-card rounded-xl p-5 space-y-2 border-l-2 border-l-slate-600">
+                    <div class="glass-card rounded-xl p-5 space-y-2 border-l-2 border-l-slate-600 reveal-child">
                         <div class="flex justify-between items-start">
                             <div>
                                 <h4 class="font-bold text-slate-100">B.Tech in Computer Science (Data Science)</h4>
@@ -942,7 +979,7 @@
                     </div>
 
                     <!-- Certifications -->
-                    <div class="glass-card rounded-xl p-5 space-y-3">
+                    <div class="glass-card rounded-xl p-5 space-y-3 reveal-child">
                         <span class="text-xs font-mono uppercase tracking-wider text-slate-500 block">Verified Certifications</span>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                             <a href="https://coursera.org/share/3bb84622ec658e95f722c66225194a72" target="_blank" rel="noopener" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-sky-300 transition-colors flex items-center justify-between">
@@ -981,7 +1018,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                 
-                <div class="glass-card rounded-xl p-5 space-y-3">
+                <div class="glass-card rounded-xl p-5 space-y-3 reveal-child">
                     <span class="text-xs font-mono uppercase tracking-wider text-sky-400 block font-semibold">Languages</span>
                     <div class="flex flex-wrap gap-1.5">
                         <span class="badge">Python</span>
@@ -993,7 +1030,7 @@
                     </div>
                 </div>
 
-                <div class="glass-card rounded-xl p-5 space-y-3">
+                <div class="glass-card rounded-xl p-5 space-y-3 reveal-child">
                     <span class="text-xs font-mono uppercase tracking-wider text-indigo-400 block font-semibold">ML &amp; AI Frameworks</span>
                     <div class="flex flex-wrap gap-1.5">
                         <span class="badge">TensorFlow</span>
@@ -1004,7 +1041,7 @@
                     </div>
                 </div>
 
-                <div class="glass-card rounded-xl p-5 space-y-3">
+                <div class="glass-card rounded-xl p-5 space-y-3 reveal-child">
                     <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 block font-semibold">Data &amp; Cloud</span>
                     <div class="flex flex-wrap gap-1.5">
                         <span class="badge">Google BigQuery</span>
@@ -1015,7 +1052,7 @@
                     </div>
                 </div>
 
-                <div class="glass-card rounded-xl p-5 space-y-3">
+                <div class="glass-card rounded-xl p-5 space-y-3 reveal-child">
                     <span class="text-xs font-mono uppercase tracking-wider text-purple-400 block font-semibold">BI &amp; Tools</span>
                     <div class="flex flex-wrap gap-1.5">
                         <span class="badge">Tableau</span>
@@ -1177,14 +1214,51 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Scroll observer
+        // Apple Editorial Hero Parallax & Depth Scroll
+        (function initHeroParallax() {
+            const heroPortrait = document.getElementById('hero-portrait-wrap');
+            const heroTitle = document.getElementById('hero-title-wrap');
+            if (!heroPortrait || !heroTitle) return;
+
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion) return;
+
+            let ticking = false;
+
+            function updateParallax() {
+                const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollY <= 850) {
+                    const portraitY = scrollY * 0.18;
+                    const portraitScale = Math.max(0.92, 1 - (scrollY * 0.00012));
+                    const portraitOpacity = Math.max(0, 1 - (scrollY / 640));
+
+                    heroPortrait.style.transform = `translate3d(0, ${portraitY.toFixed(1)}px, 0) scale(${portraitScale.toFixed(3)})`;
+                    heroPortrait.style.opacity = portraitOpacity.toFixed(3);
+
+                    const titleY = scrollY * 0.07;
+                    const titleOpacity = Math.max(0, 1 - (scrollY / 520));
+                    heroTitle.style.transform = `translate3d(0, ${titleY.toFixed(1)}px, 0)`;
+                    heroTitle.style.opacity = titleOpacity.toFixed(3);
+                }
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateParallax);
+                    ticking = true;
+                }
+            }, { passive: true });
+        })();
+
+        // Enhanced Apple / Framer Scroll Intersection Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.reveal-node').forEach(node => observer.observe(node));
 
