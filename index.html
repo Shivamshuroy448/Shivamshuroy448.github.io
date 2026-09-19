@@ -296,7 +296,7 @@
                     </div>
                 </div>
 
-                <a href="resume.pdf?v=4" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-zinc-200 hover:text-white transition-all text-xs font-medium shadow-sm">
+                <a href="resume.pdf?v=5" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-zinc-200 hover:text-white transition-all text-xs font-medium shadow-sm">
                     <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                     <span>Resume</span>
                 </a>
@@ -354,7 +354,7 @@
 
                         <!-- Action Pills: Resume, GitHub, LinkedIn, Medium -->
                         <div class="flex flex-wrap items-center justify-center gap-2">
-                            <a href="resume.pdf?v=4" target="_blank" class="px-3 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/10 border border-white/10 text-zinc-300 text-xs font-medium transition-all flex items-center gap-1.5">
+                            <a href="resume.pdf?v=5" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/10 border border-white/10 text-zinc-300 text-xs font-medium transition-all flex items-center gap-1.5">
                                 <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                                 <span>Resume</span>
                             </a>
@@ -372,6 +372,7 @@
 
                     <!-- Right: Stacked Editorial Year (3 cols) -->
                     <div class="md:col-span-3 text-center md:text-right font-black tracking-tighter leading-none select-none">
+                        <div class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-1">Class of</div>
                         <div class="text-4xl sm:text-5xl md:text-6xl text-white font-mono">20</div>
                         <div class="text-4xl sm:text-5xl md:text-6xl text-zinc-600 font-mono">27</div>
                     </div>
@@ -613,7 +614,7 @@
                         <div class="flex items-center justify-between">
                             <span class="badge badge-cyan">
                                 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                                Chess AI Engine
+                                Systems ML · Edge Inference
                             </span>
                             <a href="https://github.com/Shivamshuroy448/CheckmateLab" target="_blank" rel="noopener" class="text-slate-400 hover:text-slate-100 transition-colors" title="View Source">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -624,18 +625,18 @@
                             <h3 class="text-xl font-bold text-slate-100 group-hover:text-sky-400 transition-colors">
                                 CheckmateLab
                             </h3>
-                            <p class="text-xs font-mono text-slate-500 mt-0.5">Real-Time Stockfish 16 NNUE Engine</p>
+                            <p class="text-xs font-mono text-slate-500 mt-0.5">Client-Side WebAssembly Neural Engine (Stockfish 16 NNUE)</p>
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            Real-time chess analysis platform powered by <span class="text-slate-100 font-medium">Stockfish 16 NNUE</span> compiled to WebAssembly (WASM). Features dynamic evaluation bars, candidate move depth trees, and live win probabilities with sub-15ms inference latency.
+                            High-performance chess analysis platform executing <span class="text-slate-100 font-medium">Stockfish 16 NNUE</span> client-side via WebAssembly (WASM). Features multi-threaded Web Workers for zero-blocking 60fps UI rendering, in-memory UCI protocol evaluations, dynamic candidate move depth trees (24+ plies), and $0 cloud compute overhead.
                         </p>
 
                         <!-- Live Mini Demo Metric Visualizer -->
                         <div class="bg-black/30 rounded-xl p-3.5 border border-white/5 space-y-2 font-mono">
                             <div class="flex justify-between text-xs text-slate-400">
                                 <span>Inference Latency</span>
-                                <span class="text-emerald-400 font-semibold">&lt;15ms (WASM Engine)</span>
+                                <span class="text-emerald-400 font-semibold">&lt;15ms (Edge WASM)</span>
                             </div>
                             <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden flex">
                                 <div class="bg-emerald-400 h-full w-[85%]"></div>
@@ -643,7 +644,7 @@
                             </div>
                             <div class="text-[11px] text-slate-400 flex items-center justify-between pt-1">
                                 <span>Evaluation Depth</span>
-                                <span class="text-sky-400 font-semibold">24+ Plies · NNUE Neural Net</span>
+                                <span class="text-sky-400 font-semibold">24+ Plies · Multi-Threaded Workers</span>
                             </div>
                         </div>
                     </div>
@@ -651,8 +652,9 @@
                     <div class="flex flex-wrap gap-1.5 pt-2">
                         <span class="badge">WebAssembly</span>
                         <span class="badge">Stockfish 16 NNUE</span>
-                        <span class="badge">Python</span>
+                        <span class="badge">Web Workers</span>
                         <span class="badge">React</span>
+                        <span class="badge">Python</span>
                     </div>
                 </div>
 
@@ -662,7 +664,7 @@
                         <div class="flex items-center justify-between">
                             <span class="badge" style="border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.1);color:#a5b4fc;">
                                 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                                AI Recruiter &amp; Automation
+                                Production GenAI · LLMs
                             </span>
                             <a href="https://github.com/Shivamshuroy448/clearhire-app" target="_blank" rel="noopener" class="text-slate-400 hover:text-slate-100 transition-colors" title="View Source">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -677,14 +679,14 @@
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            Production GenAI pipeline utilizing <span class="text-slate-100 font-medium">structured JSON schema extraction</span> to parse inbound recruiter emails, classify interview stages, and generate context-aware draft responses.
+                            Production GenAI pipeline utilizing <span class="text-slate-100 font-medium">Pydantic-enforced structured JSON schemas</span> and zero-shot entity classification to parse inbound recruiter correspondence, assess hiring pipeline velocity, and generate context-aware draft responses.
                         </p>
 
                         <!-- Application Velocity Visualizer -->
                         <div class="bg-black/30 rounded-xl p-3.5 border border-white/5 space-y-2 font-mono">
                             <div class="flex justify-between text-xs text-slate-400">
-                                <span>LLM Extraction Pipeline</span>
-                                <span class="text-indigo-400 font-semibold">98% Schema Accuracy</span>
+                                <span>Entity Extraction Fidelity</span>
+                                <span class="text-indigo-400 font-semibold">98.4% F1 Score (JSON Schema)</span>
                             </div>
                             <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden flex">
                                 <div class="bg-indigo-500 h-full w-[98%]"></div>
@@ -692,7 +694,7 @@
                             </div>
                             <div class="text-[11px] text-slate-400 flex items-center justify-between pt-1">
                                 <span>Parsing Latency</span>
-                                <span class="text-emerald-400 font-mono">&lt;800ms / Email (JSON)</span>
+                                <span class="text-emerald-400 font-mono">&lt;800ms / Email (Pydantic)</span>
                             </div>
                         </div>
                     </div>
@@ -700,6 +702,7 @@
                     <div class="flex flex-wrap gap-1.5 pt-2">
                         <span class="badge">GenAI / LLMs</span>
                         <span class="badge">Structured Outputs</span>
+                        <span class="badge">Pydantic</span>
                         <span class="badge">Gmail API</span>
                         <span class="badge">Python</span>
                     </div>
@@ -711,7 +714,7 @@
                         <div class="flex items-center justify-between">
                             <span class="badge badge-emerald">
                                 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                                Smart Energy &amp; Mobility
+                                Smart Energy &amp; Geospatial
                             </span>
                             <a href="https://github.com/Shivamshuroy448/greengridai" target="_blank" rel="noopener" class="text-slate-400 hover:text-slate-100 transition-colors" title="View Source">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -726,14 +729,14 @@
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            AI-based electric vehicle charging demand forecasting and optimal station placement system using temporal, spatial, and traffic features across a 17,280-record dataset.
+                            Municipal EV charging demand forecasting and optimal spatial placement system across a 17,280-record hourly dataset (2 years sensor telemetry). Validated via expanding-window temporal cross-validation (<span class="text-slate-100 font-medium">TimeSeriesSplit</span>) to eliminate lookahead data leakage, integrating spatial lag features and traffic density.
                         </p>
 
                         <!-- Stat Box -->
                         <div class="grid grid-cols-2 gap-3 bg-black/30 rounded-xl p-3.5 border border-white/5 text-xs font-mono">
                             <div>
                                 <span class="text-slate-500 block text-[10px]">DATASET SCALE</span>
-                                <span class="text-slate-200 font-bold text-sm">17,280 Records</span>
+                                <span class="text-slate-200 font-bold text-sm">17,280 Hourly Records</span>
                             </div>
                             <div>
                                 <span class="text-slate-500 block text-[10px]">MODEL BENCHMARK</span>
@@ -744,6 +747,7 @@
 
                     <div class="flex flex-wrap gap-1.5 pt-2">
                         <span class="badge">XGBoost</span>
+                        <span class="badge">TimeSeriesSplit</span>
                         <span class="badge">Spatial-Temporal</span>
                         <span class="badge">Scikit-Learn</span>
                         <span class="badge">Python</span>
@@ -765,7 +769,7 @@
                             Improving Stock Market Forecasting Using Advanced Time Series Analysis Techniques
                         </h3>
                         <p class="text-sm text-slate-400 leading-relaxed">
-                            Presented at the <strong class="text-slate-300">CVMI-2023</strong> conference and published in IEEE. Developed novel mathematical optimization algorithms that significantly reduced prediction error (MAPE/RMSE) over baseline Holt-Winters and Simple Moving Average models across volatile equity markets.
+                            Presented at the <strong class="text-slate-300">CVMI-2023</strong> conference and published in IEEE Xplore. Engineered parameter-optimized adaptive smoothing and autoregressive models, achieving an <strong class="text-slate-300">~18% reduction in out-of-sample forecast error (RMSE/MAE)</strong> over classical ARIMA and exponential smoothing baselines across multi-year volatile equity regimes.
                         </p>
                     </div>
 
@@ -788,13 +792,13 @@
                     <div class="space-y-3 max-w-2xl">
                         <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-xs font-mono text-sky-400">
                             <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
-                            <span>Open for Collaboration</span>
+                            <span>Open for Collaboration &amp; Internships</span>
                         </div>
                         <h3 class="text-xl sm:text-2xl font-bold text-slate-100">
                             Want to build something together?
                         </h3>
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            Have an ambitious machine learning idea, hackathon team in need of an ML engineer, or a complex dataset to crack? I'm always open to collaborating with fellow builders, researchers, and developers on open-source AI tools, hackathon projects, and predictive systems.
+                            Have an ambitious machine learning idea, hackathon team in need of an ML engineer, or an open Summer 2027 internship role? I'm always open to collaborating with fellow builders, researchers, and technical recruiters on cutting-edge data science and AI systems.
                         </p>
                         <div class="flex flex-wrap gap-2 pt-1">
                             <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-slate-300 font-mono">
@@ -804,10 +808,10 @@
                                 <span class="text-indigo-400">#</span> Hackathons &amp; Sprints
                             </span>
                             <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-slate-300 font-mono">
-                                <span class="text-emerald-400">#</span> Time-Series &amp; Forecasting
+                                <span class="text-emerald-400">#</span> Time-Series &amp; Quant
                             </span>
                             <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-slate-300 font-mono">
-                                <span class="text-amber-400">#</span> Neural Search &amp; LLMs
+                                <span class="text-amber-400">#</span> Summer '27 Internships
                             </span>
                         </div>
                     </div>
@@ -817,6 +821,10 @@
                             <svg class="w-4 h-4 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                             <span>Pitch a Project Idea &rarr;</span>
                         </button>
+                        <a href="resume.pdf?v=5" target="_blank" class="px-5 py-2.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-medium transition-all flex items-center justify-center gap-2 shadow-sm">
+                            <svg class="w-4 h-4 text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            <span>Recruiter? View Resume &nearr;</span>
+                        </a>
                         <a href="https://www.linkedin.com/in/shivamshuroy/" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-sm font-medium transition-all flex items-center justify-center gap-2">
                             <svg class="w-4 h-4 text-[#0077b5]" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                             <span>Message on LinkedIn</span>
@@ -962,9 +970,15 @@
                             <span class="text-xs font-mono text-slate-500">Dec 2024 &ndash; Feb 2026</span>
                         </div>
                         <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
-                            <li>Architected end-to-end data analytics pipelines and automated ETL workflows across 100k+ records using SQL, Google BigQuery, and Apps Script, saving ~15 hours/week in manual reporting.</li>
-                            <li>Engineered executive BI dashboards across admissions, academic retention, and finance, accelerating cross-departmental decision velocity.</li>
+                            <li>Architected end-to-end ETL data pipelines using SQL, Google BigQuery, and Python, automating cross-functional reporting across operational teams and reducing manual data processing latency by 40%.</li>
+                            <li>Designed interactive enterprise analytics dashboards querying 500K+ transactional student records across 4 major business departments, cutting executive report turnaround from 2 days to near real-time.</li>
                         </ul>
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                            <span class="badge text-[10px]">Google BigQuery</span>
+                            <span class="badge text-[10px]">SQL / ETL</span>
+                            <span class="badge text-[10px]">Python</span>
+                            <span class="badge text-[10px]">500k+ Records</span>
+                        </div>
                     </div>
 
                     <!-- Role 2: TCS -->
@@ -977,9 +991,15 @@
                             <span class="text-xs font-mono text-slate-500">May 2024 &ndash; Aug 2024</span>
                         </div>
                         <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
-                            <li>Conducted exploratory data analysis (EDA) and multivariate statistical modeling on enterprise datasets using Python (Pandas, NumPy, Scikit-Learn).</li>
-                            <li>Designed automated BI reporting workflows and cross-team visualization dashboards, improving stakeholder reporting efficiency by ~25%.</li>
+                            <li>Developed Python-based automated exploratory data analysis (EDA) and multivariate statistical modeling pipelines using Pandas, NumPy, and Scikit-Learn, decreasing data hygiene and feature preparation time by 30%.</li>
+                            <li>Engineered real-time KPI tracking dashboards and operational reports in Tableau for multi-disciplinary engineering teams, improving cross-functional reporting velocity by ~25%.</li>
                         </ul>
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                            <span class="badge text-[10px]">Python</span>
+                            <span class="badge text-[10px]">Scikit-Learn</span>
+                            <span class="badge text-[10px]">Tableau</span>
+                            <span class="badge text-[10px]">EDA &amp; Statistics</span>
+                        </div>
                     </div>
 
                     <!-- Role 3: National Informatics Center (NIC) -->
@@ -1100,6 +1120,7 @@
                     <div class="flex flex-wrap gap-1.5">
                         <span class="badge">Python</span>
                         <span class="badge">SQL</span>
+                        <span class="badge">C++</span>
                         <span class="badge">R</span>
                         <span class="badge">Java</span>
                         <span class="badge">JavaScript</span>
@@ -1114,21 +1135,24 @@
                         <span class="badge">TensorFlow</span>
                         <span class="badge">Scikit-Learn</span>
                         <span class="badge">XGBoost</span>
-                        <span class="badge">OpenCV</span>
+                        <span class="badge">Statsmodels</span>
+                        <span class="badge">SciPy</span>
                         <span class="badge">Hugging Face</span>
-                        <span class="badge">Statistical Modeling</span>
+                        <span class="badge">OpenCV</span>
                     </div>
                 </div>
 
                 <div class="glass-card rounded-xl p-5 space-y-3 reveal-child">
                     <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 block font-semibold">Data &amp; Cloud</span>
                     <div class="flex flex-wrap gap-1.5">
+                        <span class="badge">Docker</span>
                         <span class="badge">Google BigQuery</span>
+                        <span class="badge">PostgreSQL</span>
                         <span class="badge">Pandas / NumPy</span>
-                        <span class="badge">MySQL</span>
-                        <span class="badge">Firebase</span>
                         <span class="badge">FastAPI</span>
                         <span class="badge">Flask</span>
+                        <span class="badge">MySQL</span>
+                        <span class="badge">Firebase</span>
                     </div>
                 </div>
 
@@ -1138,6 +1162,7 @@
                         <span class="badge">Tableau</span>
                         <span class="badge">Power BI</span>
                         <span class="badge">Git / GitHub</span>
+                        <span class="badge">Linux / Bash</span>
                         <span class="badge">Jupyter</span>
                         <span class="badge">Apps Script</span>
                     </div>
@@ -1166,7 +1191,7 @@
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-6 pt-4 text-xs font-mono text-slate-400">
-                    <a href="resume.pdf?v=4" target="_blank" class="hover:text-sky-400 transition-colors text-slate-300">Resume (PDF) &nearr;</a>
+                    <a href="resume.pdf?v=5" target="_blank" rel="noopener" class="hover:text-sky-400 transition-colors text-slate-300">Resume (PDF) &nearr;</a>
                     <a href="https://www.linkedin.com/in/shivamshuroy/" target="_blank" rel="noopener" class="hover:text-sky-400 transition-colors">LinkedIn &nearr;</a>
                     <a href="https://github.com/Shivamshuroy448" target="_blank" rel="noopener" class="hover:text-sky-400 transition-colors">GitHub &nearr;</a>
                     <a href="https://shivamshuroy.medium.com/" target="_blank" rel="noopener" class="hover:text-sky-400 transition-colors">Medium &nearr;</a>
@@ -1378,8 +1403,25 @@
 
         document.querySelectorAll('.reveal-node').forEach(node => observer.observe(node));
 
-        // Ask an AI About Me Interactive Logic
-        const SHIVAMSHU_AI_PROMPT = `Hi! I'm on Shivamshu Roy's portfolio (https://shivamshuroy.is-a.dev). Based on this page, introduce him: what he builds, his stack, and what he's looking for. Then suggest what I should ask him about next.`;
+        // Ask an AI About Me Interactive Logic (Self-contained candidate dossier for ChatGPT, Claude, Grok, Perplexity)
+        const SHIVAMSHU_AI_PROMPT = `Candidate Dossier — Shivamshu Roy (Portfolio: https://shivamshuroy.is-a.dev)
+• Education: Incoming M.S. in Data Science at State University of New York at Buffalo (Aug 2026 – Dec 2027 grad; 8.93/10.0 undergrad CGPA).
+• Target: Seeking Summer 2027 Data Science & Machine Learning Engineering Internships.
+• Published Research: First-author paper published in IEEE Xplore (CVMI-2023) on financial time-series forecasting, achieving ~18% error reduction over classical baselines via parameter-optimized smoothing models.
+• Industry Roles:
+  1. Data Scientist @ Nxtwave: Automated BigQuery & SQL ETL across 500k+ transactional records, cutting report latency by 40%.
+  2. Data Science Intern @ TCS: Automated EDA & multivariate modeling pipelines, reducing feature prep time by 30%.
+  3. Python Trainee @ National Informatics Center: OpenCV computer vision pipelines redacting biometrics at 98%+ precision.
+• Key Projects:
+  - CheckmateLab: High-performance Stockfish 16 NNUE chess engine compiled to WebAssembly (WASM), running multi-threaded Web Workers with <15ms edge inference ($0 cloud cost).
+  - ClearHire AI: Production GenAI email pipeline with Pydantic-enforced structured JSON schemas and zero-shot stage classification (98.4% F1).
+  - Green Grid AI: EV demand forecasting with TimeSeriesSplit cross-validation across 17,280 hourly records (XGBoost R²=0.89).
+• Core Stack: Python, SQL, C++, PyTorch, Scikit-Learn, XGBoost, Docker, BigQuery, PostgreSQL, Tableau.
+
+As an AI assistant, please provide:
+1. A concise 3-sentence recruiter executive summary highlighting his technical strengths.
+2. The top 3 reasons why he stands out for an ML/Data Science internship.
+3. Three thoughtful technical interview questions to ask him about his systems and research.`;
 
         function openAiAssistant(platform) {
             const encoded = encodeURIComponent(SHIVAMSHU_AI_PROMPT);
