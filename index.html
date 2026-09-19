@@ -650,7 +650,7 @@
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            High-performance chess analysis platform executing <span class="text-slate-100 font-medium">Stockfish 16 NNUE</span> client-side via WebAssembly (WASM). Features multi-threaded Web Workers utilizing <span class="text-slate-100 font-medium">SharedArrayBuffer</span> to isolate 24-ply alpha-beta minimax search from the DOM, guaranteeing zero-blocking 60fps React UI rendering with sub-15ms edge inference ($0 cloud compute).
+                            High-performance chess analysis platform executing <span class="text-slate-100 font-medium">Stockfish 16 NNUE</span> client-side via WebAssembly (WASM). Features multi-threaded Web Workers utilizing <span class="text-slate-100 font-medium">SharedArrayBuffer</span> to isolate 24-ply alpha-beta minimax search from the DOM, integrated with <span class="text-slate-100 font-medium">Firebase OAuth</span> and real-time player ELO rating progression ($0 cloud compute).
                         </p>
 
                         <!-- Live Mini Demo Metric Visualizer -->
@@ -664,8 +664,8 @@
                                 <div class="bg-slate-700 h-full w-[15%]"></div>
                             </div>
                             <div class="text-[11px] text-slate-400 flex items-center justify-between pt-1">
-                                <span>Model Storage &amp; Cache</span>
-                                <span class="text-sky-400 font-semibold">&lt;35MB NNUE · IndexedDB</span>
+                                <span>State &amp; Model Storage</span>
+                                <span class="text-sky-400 font-semibold">&lt;35MB NNUE · Firebase ELO</span>
                             </div>
                         </div>
                     </div>
@@ -674,9 +674,9 @@
                         <span class="badge">WebAssembly</span>
                         <span class="badge">Stockfish 16 NNUE</span>
                         <span class="badge">SharedArrayBuffer</span>
-                        <span class="badge">Web Workers</span>
+                        <span class="badge">Firebase OAuth</span>
+                        <span class="badge">Dynamic ELO</span>
                         <span class="badge">React</span>
-                        <span class="badge">Python</span>
                     </div>
                 </div>
 
@@ -703,7 +703,7 @@
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            Production GenAI pipeline integrating <span class="text-slate-100 font-medium">Pydantic-enforced structured schemas</span> with a statistical <span class="text-slate-100 font-medium">response hazard &amp; ghosting risk model</span> over a containerized FastAPI backend. Calibrated for high-skew inboxes via cost-sensitive decision thresholds (<span class="text-slate-100 font-medium">PR-AUC = 0.94</span>).
+                            Production GenAI pipeline integrating <span class="text-slate-100 font-medium">Pydantic-enforced structured schemas</span> with a statistical <span class="text-slate-100 font-medium">response hazard model</span> over a containerized FastAPI backend. Hardened against LLM schema drift via automated <span class="text-slate-100 font-medium">PyTest regression evals</span> (PR-AUC = 0.94).
                         </p>
 
                         <!-- Application Velocity Visualizer -->
@@ -729,7 +729,7 @@
                         <span class="badge">Pydantic</span>
                         <span class="badge">Hazard Modeling</span>
                         <span class="badge">FastAPI</span>
-                        <span class="badge">Python</span>
+                        <span class="badge">PyTest Evals</span>
                     </div>
                 </div>
 
@@ -756,7 +756,7 @@
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            Dual-stage municipal EV infrastructure engine: couples an <span class="text-slate-100 font-medium">XGBoost demand regression model</span> (R² = 0.89, MAPE = 6.2% across 17,280 hourly records, validated via leakage-free <span class="text-slate-100 font-medium">TimeSeriesSplit</span>) with a <span class="text-slate-100 font-medium">Constrained Spatial Clustering &amp; Facility Location algorithm</span> (P-Median / Voronoi) balancing grid capacity and traffic density.
+                            Dual-stage municipal EV infrastructure engine: couples an <span class="text-slate-100 font-medium">XGBoost demand regression model</span> (R² = 0.89, MAPE = 6.2% across 17,280 hourly records) trained on <span class="text-slate-100 font-medium">temporal lag features &amp; diurnal encodings</span> with a <span class="text-slate-100 font-medium">Constrained Spatial Clustering &amp; Facility Location algorithm</span> (P-Median / Voronoi) balancing grid capacity and traffic density.
                         </p>
 
                         <!-- Stat Box -->
@@ -776,8 +776,8 @@
                         <span class="badge">XGBoost</span>
                         <span class="badge">Facility Location / OR</span>
                         <span class="badge">TimeSeriesSplit</span>
+                        <span class="badge">Temporal Lags</span>
                         <span class="badge">Geospatial Clustering</span>
-                        <span class="badge">Scikit-Learn</span>
                         <span class="badge">Python</span>
                     </div>
                 </div>
@@ -1003,11 +1003,13 @@
                         <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
                             <li>Architected end-to-end ETL data pipelines using SQL, Google BigQuery, and Python, automating cross-functional reporting across operational teams and reducing manual data processing latency by 40%.</li>
                             <li>Designed interactive enterprise analytics dashboards querying 500K+ transactional student records across 4 major business departments, cutting executive report turnaround from 2 days to near real-time.</li>
+                            <li>Built automated data validation and anomaly detection workflows using Google Apps Script and REST APIs, eliminating multi-team discrepancies and auditing pipeline integrity.</li>
                         </ul>
                         <div class="flex flex-wrap gap-1.5 pt-1">
                             <span class="badge text-[10px]">Google BigQuery</span>
                             <span class="badge text-[10px]">SQL / ETL</span>
                             <span class="badge text-[10px]">Python</span>
+                            <span class="badge text-[10px]">Anomaly Detection</span>
                             <span class="badge text-[10px]">500k+ Records</span>
                         </div>
                     </div>
@@ -1115,12 +1117,13 @@
 
                     <!-- Degree 2: Bennett University -->
                     <div class="glass-card rounded-xl p-5 space-y-2 border-l-2 border-l-slate-600 reveal-child">
-                        <div class="flex justify-between items-start">
+                        <div class="flex justify-between items-start gap-3">
                             <div>
                                 <h4 class="font-bold text-slate-100">B.Tech in Computer Science (Data Science)</h4>
-                                <p class="text-xs text-slate-400">Bennett University</p>
+                                <p class="text-xs text-slate-400">Bennett University · Greater Noida, India</p>
+                                <p class="text-[11px] text-emerald-400/90 font-mono pt-0.5 font-semibold">Graduated with 8.93 / 10.0 CGPA</p>
                             </div>
-                            <span class="text-xs font-mono text-emerald-400 font-semibold">CGPA: 8.93 / 10.0</span>
+                            <span class="badge text-[10px] shrink-0 font-mono text-slate-400 border-white/10 bg-white/5">2020 &ndash; 2024</span>
                         </div>
                     </div>
 
