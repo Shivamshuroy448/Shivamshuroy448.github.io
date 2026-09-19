@@ -219,23 +219,23 @@
     <main class="max-w-6xl mx-auto px-6 py-10 space-y-24">
 
         <!-- EDITORIAL HERO SECTION (FRAMER AESTHETIC) -->
-        <section class="pt-4 sm:pt-8 pb-8 relative overflow-hidden">
+        <section class="pt-4 sm:pt-8 pb-8 relative">
             <div class="relative w-full max-w-5xl mx-auto flex flex-col items-center">
                 
-                <!-- Seamless Cutout Portrait (Centered, fading directly into dark canvas) -->
-                <div class="relative z-10 w-[270px] sm:w-[350px] md:w-[410px] aspect-square -mb-14 sm:-mb-24 md:-mb-32">
+                <!-- Seamless Cutout Portrait (Prominent & Enchanced Scale, fading directly into dark canvas) -->
+                <div class="relative z-10 w-[320px] sm:w-[440px] md:w-[540px] lg:w-[600px] aspect-square -mb-16 sm:-mb-28 md:-mb-40 lg:-mb-48">
                     <!-- Subtle soft spotlight behind subject -->
-                    <div class="absolute inset-0 bg-radial from-white/[0.07] via-white/[0.01] to-transparent rounded-full blur-3xl scale-95 pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-radial from-white/[0.08] via-white/[0.01] to-transparent rounded-full blur-3xl scale-95 pointer-events-none"></div>
                     
-                    <!-- Apple Vision Neural Cutout with smooth bottom dissolve -->
+                    <!-- Clean Defringed Neural Cutout with smooth bottom dissolve -->
                     <img src="profile_cutout.webp" alt="Shivamshu Roy" 
                          class="w-full h-full object-cover object-top filter brightness-[0.98] contrast-[1.03] select-none pointer-events-none"
-                         style="mask-image: linear-gradient(to bottom, black 50%, transparent 96%); -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 96%);" />
+                         style="mask-image: linear-gradient(to bottom, black 52%, transparent 97%); -webkit-mask-image: linear-gradient(to bottom, black 52%, transparent 97%);" />
                 </div>
 
-                <!-- Giant Statement Name Layer (Overlapping lower chest) -->
-                <div class="relative z-20 w-full text-center px-2">
-                    <h1 class="text-center font-black tracking-tighter leading-[0.85] select-none text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-600 text-[13.5vw] sm:text-[11.5vw] md:text-[9.5vw] lg:text-[124px]">
+                <!-- Giant Statement Name Layer (Overlapping lower chest, with padding to prevent any glyph clipping) -->
+                <div class="relative z-20 w-full text-center px-4 sm:px-8 overflow-visible">
+                    <h1 class="inline-block text-center font-black tracking-[-0.035em] leading-[0.96] pb-3 pr-3 select-none text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-600 text-[13vw] sm:text-[11vw] md:text-[9vw] lg:text-[122px]">
                         Shivamshu Roy
                     </h1>
                 </div>
